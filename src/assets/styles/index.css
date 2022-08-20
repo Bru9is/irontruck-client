@@ -1,1 +1,9 @@
-/* Seus estilos globais vão aqui */
+.flex-container {
+    display: flex !important;
+    justify-content: space-around !important;
+    flex-direction: row !important;
+}
+
+.signup-container{
+    height: 200px
+}

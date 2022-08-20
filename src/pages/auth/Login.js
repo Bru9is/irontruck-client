@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import apiService from "../../services/api.service";
 
 import { AuthContext } from "../../contexts/authContext";
@@ -35,7 +35,7 @@ function Login(props) {
         JSON.stringify({ ...response.data })
       );
       setErrors({ password: "", email: "" });
-      navigate("/book/all");
+      navigate("/book/all"); //mudar
     } catch (err) {
       console.error(err);
       setErrors({ ...err.response.data.errors });
@@ -72,10 +72,6 @@ function Login(props) {
 
       <div>
         <button type="submit">Login!</button>
-
-        <Link to="/auth/signup">
-          Don't have an account? Click here to signup!
-        </Link>
       </div>
     </form>
   );
