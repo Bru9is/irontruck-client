@@ -3,11 +3,22 @@ import { Link, useNavigate } from "react-router-dom";
 import apiService from "../../services/api.service";
 
 function Signup(props) {
-  const [state, setState] = useState({ name: "", password: "", email: "" });
+  const [state, setState] = useState({ 
+                              name: "", 
+                              password: "", 
+                              email: "", 
+                              phone: "", 
+                              address: {street:"", number:"", city:"", state:"", zip:""}, 
+                              role: "", 
+                              document: "" });
   const [errors, setErrors] = useState({
     name: null,
     email: null,
     password: null,
+    role: null,
+    phone: null,
+    address: {street:null, number:null, city:null, state:null, zip:null},
+    document: null,
   });
 
   const navigate = useNavigate();
@@ -24,7 +35,7 @@ function Signup(props) {
 
     try {
       await apiService.signUp(state);
-      setErrors({ name: "", password: "", email: "" });
+      setErrors({ name: "", password: "", email: "", phone: "", address: {street:""}, role: "", document: "" });
       navigate("/auth/login");
     } catch (err) {
       console.error(err);
@@ -68,6 +79,29 @@ function Signup(props) {
           id="signupFormPassword"
           value={state.password}
           error={errors.password}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="signupFormRole">Role</label>
+        <select id="signupFormRole"
+          value={state.role}
+          error={errors.role}
+          onChange={handleChange}>
+        <option>User</option>
+        <option>Company</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="signupFormStreet">Street</label>
+        <input
+          type="text"
+          name="name"
+          id="signupFormStreet"
+          value={state.address.street}
+          error={errors.address.street}
           onChange={handleChange}
         />
       </div>
