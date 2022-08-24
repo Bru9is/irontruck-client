@@ -7,7 +7,6 @@ class ApiService {
     });
 
     this.api.interceptors.request.use((config) => {
-      // Verifica se já temos as informações do usuário logado no localStorage
       const storedUser = localStorage.getItem("loggedInUser");
     
       const loggedInUser = JSON.parse(storedUser || '""');
@@ -28,6 +27,10 @@ class ApiService {
 
   async login(user) {
     return await this.api.post("/login", user);
+  }
+
+  async createPost(post) {
+    return await this.api.post("/new-post", post);
   }
 }
 

@@ -28,6 +28,8 @@ function Home() {
         </div>
       </div>
 
+     
+
       <Link to="/auth/login">
           Already have an account? Click here to login.
       </Link>
