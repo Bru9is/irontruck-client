@@ -35,7 +35,10 @@ function Login(props) {
         JSON.stringify({ ...response.data })
       );
       setErrors({ password: "", email: "" });
-      navigate("/book/all"); //mudar
+
+      if (response.data.user.role === "user") navigate('/user-page')
+      else if (response.data.user.role === 'company') navigate("/company-page"); 
+
     } catch (err) {
       console.error(err);
       setErrors({ ...err.response.data.errors });

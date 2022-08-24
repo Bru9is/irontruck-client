@@ -5,7 +5,6 @@ import apiService from "../../services/api.service";
 function Signup(props) {
 
   const [searchParams] = useSearchParams()
-  console.log(searchParams.get('type'))
 
   const [state, setState] = useState({ 
     name: "", 
