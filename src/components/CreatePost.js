@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import apiService from "../services/api.service.js"; 
 
 
-const Post = () => {
+const Post = (props) => {
 
   const [state, setState] = useState({ 
     date: null, 

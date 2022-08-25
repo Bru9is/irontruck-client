@@ -32,6 +32,11 @@ class ApiService {
   async createPost(post) {
     return await this.api.post("/new-post", post);
   }
+
+  async getPosts() {
+    return await this.api.get("/user-posts");
+  }
+
 }
 
 export default new ApiService();
