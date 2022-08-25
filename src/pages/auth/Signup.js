@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import apiService from "../../services/api.service"; 
+import Navbar from "../../components/Navbar";
 
 function Signup(props) {
 
@@ -71,8 +72,15 @@ function Signup(props) {
   }
 
   return (
+    <div>
+      <Navbar />
+
+    <div className = "signup-container">
+    
     <form onSubmit={handleSubmit}>
-      <h1>{state.role} signup</h1>
+      <h1>{state.role.toUpperCase()} SIGNUP</h1>
+
+      <div className = "signup-form-container">
 
       <div>
         <label htmlFor="signupFormName">Name</label>
@@ -176,7 +184,7 @@ function Signup(props) {
           type="text"
           name="zip"
           id="signupFormZip"
-          /*pattern="	^\d{5}-\d{3}$"*/
+          pattern="	^\d{5}-\d{3}$"
           value={state.zip}
           error={errors.zip}
           onChange={handleChange}
@@ -196,9 +204,12 @@ function Signup(props) {
       </div>
 
       <div>
-        <button type="submit">Signup!</button>
+        <button className = 'btn' type="submit">Signup!</button>
+      </div>
       </div>
     </form>
+    </div>
+    </div>
   );
 }
 
