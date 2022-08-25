@@ -1,8 +1,12 @@
-import Post from "../components/Post.js"
+import PostCards from "../components/PostCards"
+import CreatePost from "../components/CreatePost"
 
 const UserPage = () => {
     return (
-        <Post />
+        <div>
+        <CreatePost />
+        <PostCards />
+        </div>
     )
 }
 

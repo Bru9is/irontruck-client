@@ -32,6 +32,8 @@ class ApiService {
   async createPost(post) {
     return await this.api.post("/new-post", post);
   }
+
+
 }
 
 export default new ApiService();
