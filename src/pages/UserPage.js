@@ -1,8 +1,13 @@
 import Post from "../components/Post.js"
+import Navbar from "../components/Navbar"
 
 const UserPage = () => {
     return (
-        <Post />
+        <div>
+            <Navbar />
+            <Post />
+        </div>
+
     )
 }
 

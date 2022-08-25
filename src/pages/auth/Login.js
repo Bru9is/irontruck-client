@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import apiService from "../../services/api.service";
+import Navbar from "../../components/Navbar";
 
 import { AuthContext } from "../../contexts/authContext";
 
@@ -46,11 +47,14 @@ function Login(props) {
   }
 
   return (
+    <div>
+    <Navbar />
+    <div className="login-container">
+      
     <form onSubmit={handleSubmit}>
-      <h1>Login</h1>
+      <div className = "login-form-container">
+          <label htmlFor="signupFormEmail">What's your e-mail address?</label>
 
-      <div>
-        <label htmlFor="signupFormEmail">E-mail Address</label>
         <input
           type="email"
           name="email"
@@ -61,8 +65,8 @@ function Login(props) {
         />
       </div>
 
-      <div>
-        <label htmlFor="signupFormPassword">Password</label>
+      <div className = "login-form-container">
+        <label htmlFor="signupFormPassword">Enter your password</label>
         <input
           type="password"
           name="password"
@@ -74,9 +78,11 @@ function Login(props) {
       </div>
 
       <div>
-        <button type="submit">Login!</button>
+        <button className="login-button btn" type="submit">Login!</button>
       </div>
     </form>
+    </div>
+    </div>
   );
 }
 
