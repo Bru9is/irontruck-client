@@ -1,9 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Numans&display=swap');
+
+
 .flex-container {
     display: flex !important;
     justify-content: space-around !important;
     flex-direction: row !important;
 }
 
-.signup-container{
-    height: 200px
+.navbar-nav {
+    align-items: center
+}
+
+body{
+    font-family: 'Numans', sans-serif;
+    margin-bottom: 100px;
+}
+
+.btn {
+border: none;
+font-family: inherit;
+font-size: inherit;
+color: inherit;
+background: none;
+cursor: pointer;
+padding: 25px 80px;
+display: inline-block;
+margin: 15px 30px;
+text-transform: uppercase;
+letter-spacing: 1px;
+font-weight: 700;
+outline: none;
+position: relative;
+-webkit-transition: all 1s;
+-moz-transition: all 1s;
+transition: all 1s;
+}
+.btn {
+border: 3px solid red;
+color: red;
+}
+.btn:hover {
+color: #fff;
+}
+.btn::after {
+content: '';
+position: absolute;
+z-index: -1;
+-webkit-transition: all 1s;
+-moz-transition: all 1s;
+transition: all 1s;
+}
+.btn:after {
+width: 0%;
+height: 100%;
+top: 0;
+left: 0;
+background: red;
+}
+.btn:hover:after, .btn:active:after {
+width: 100%;
+}
+
+.login-container {
+    margin: 120px auto;
+    padding: 20px;
+    width: 40%;
+    text-align: center;
+}
+
+.login-button {
+    margin-top: 50px;
+}
+
+.login-form-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+input {
+    width: 400px;
+}
+
+.page-not-found-img {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.user-page-bg {
+    background-image: url(../images/guy-with-cartons-transparent.png);
+}
+
+.signup-container {
+    margin: 50px auto;
+    padding: 20px;
+    width: 40%;
+    text-align: center;
+}
+
+.signup-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 20px auto;
 }

@@ -33,6 +33,9 @@ class ApiService {
     return await this.api.post("/new-post", post);
   }
 
+  async getPosts() {
+    return await this.api.get("/user-posts");
+  }
 
 }
 

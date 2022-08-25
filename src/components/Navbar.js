@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/authContext";
+import logo from '../assets/images/irontruck-logo.png'
 
 const Navbar = () => {
     const { isLoading, loggedInUser, logout } = useContext(AuthContext)
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#000000'}}>
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -20,22 +21,28 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
+            <div>
             <ul className="navbar-nav">
               <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/">
+                 <img width = '150' id = 'irontruck-logo' src = {logo} alt = 'irontruck logo'/>
+                </Link>
+                </li>
+                <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">
                   Home
                 </Link>
               </li>
+
               { (!isLoading && loggedInUser.token !== '') ? (
                 <>
                   <li className="nav-item active">
-                    <Link className="nav-link" to="/rooms/new">
-                      Create Room
+                    <Link className="nav-link" to="/user-page">
+                      New post
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Link onClick={() => logout() } className="nav-link" to="#">Logout</Link>
-                  </li>
+                  
+                  
                 </>
               ) : (
                 <li className="nav-item active">
@@ -45,6 +52,25 @@ const Navbar = () => {
                 </li>
               )}
             </ul>
+          </div>
+          </div>
+          <div>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/help">
+                  Need help?
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/edit-profile">
+                  My profile
+                </Link>
+              </li>
+              <li className="nav-item">
+                    <Link onClick={() => logout() } className="nav-link" to="#">Logout</Link>
+                </li>
+
+                </ul>
           </div>
         </div>
       </nav>
