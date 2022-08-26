@@ -13,6 +13,7 @@ import UserPage from "../pages/UserPage";
 import ErrorPage from "../pages/ErrorPage";
 import EditProfilePage from "../pages/EditProfilePage";
 import HelpPage from "../pages/HelpPage";
+import SearchPage from "../pages/SearchPage";
 import { AuthContextComponent } from "../contexts/authContext";
 
 
@@ -31,6 +32,7 @@ function App() {
           </Route>
             <Route path='/success' element={<SuccessPage />} />
             <Route path='/user-page' element={<UserPage />} />
+            <Route path='/search' element={<SearchPage />} />
           <Route path='/test' element={
             <PrivateRoute>
               <PrivatePage />

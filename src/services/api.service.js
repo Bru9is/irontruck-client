@@ -33,10 +33,21 @@ class ApiService {
     return await this.api.post("/new-post", post);
   }
 
+  async createProposal(proposal) {
+    return await this.api.post("/new-proposal", proposal);
+  }
+
   async getPosts() {
     return await this.api.get("/user-posts");
   }
 
+  async getActivePosts() {
+    return await this.api.get("/all-posts?active=true");
+  }
+
+  async getCompany() {
+    return await this.api.get("/profile");
+  }
 }
 
 export default new ApiService();
