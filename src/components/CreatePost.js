@@ -13,6 +13,7 @@ const Post = (props) => {
     boxing: false, 
     unboxing: false, 
     material: false, 
+    floors: "", 
     comment:""
  });
 
@@ -24,6 +25,7 @@ const Post = (props) => {
     boxing: null, 
     unboxing: null, 
     material: null, 
+    floors: null,
     comment: null
   });
 
@@ -53,7 +55,8 @@ const Post = (props) => {
             truckType: state.truckType, 
             boxing: state.boxing, 
             unboxing: state.unboxing, 
-            material: state.material, 
+            material: state.material,
+            floors: state.floors, 
             comment: state.comment
           }
 
@@ -61,7 +64,7 @@ const Post = (props) => {
 
           await apiService.createPost(newPost);
 
-          setErrors({date: "", origin: "", destination: "", truckType: "", boxing:"", unboxing:"", material:"", comment:"" });
+          setErrors({date: "", origin: "", destination: "", truckType: "", boxing:"", unboxing:"", material:"", comment:"", floors: ""});
           navigate("/success");
         } catch (err) {
           console.error(err);
@@ -153,7 +156,7 @@ const Post = (props) => {
             </div>
 
             <div>
-                <label htmlFor="createPostFormUnboxing">Material</label>
+                <label htmlFor="createPostFormMaterial">Material</label>
                 <input
                 type="checkbox"
                 name="material"
@@ -166,13 +169,13 @@ const Post = (props) => {
             </div>
 
             <div>
-                <label htmlFor="createPostFormFloor">Floor</label>
+                <label htmlFor="createPostFormFloor">Floors</label>
                 <input
                 type="number"
-                name="floor"
+                name="floors"
                 id="createPostFormFloor"
-                value={state.floor}
-                error={errors.floor}
+                value={state.floors}
+                error={errors.floors}
                 onChange={handleChange}
                 />
             </div>

@@ -1,19 +1,18 @@
-
+import Proposal from "../components/Proposal"
 import PostCard from "../components/PostCard"
-import CreatePost from "../components/CreatePost"
 import apiService from "../services/api.service"
 import Navbar from "../components/Navbar"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-const UserPage = () => {
+const SearchPage = () => {
 
     const [posts, setPosts] = useState([])
     
     useEffect(() => {
         async function getPosts(){
             try {
-                const result = await apiService.getPosts()
+                const result = await apiService.getActivePosts()
                 setPosts(result.data) 
             } catch(err) {
                 console.log(err)
@@ -25,7 +24,6 @@ const UserPage = () => {
     return (
     <div>
         <Navbar />    
-        <CreatePost />
         {posts.map((e) => {
             return(
                 <div>
@@ -39,6 +37,9 @@ const UserPage = () => {
                         material = {e.material}
                         floors = {e.floors}
                     />
+                    <Proposal 
+                        postId = {e._id}
+                    />
                 </div>
             )
         })}
@@ -46,5 +47,5 @@ const UserPage = () => {
     )
 }
 
-export default UserPage
+export default SearchPage
 

@@ -72,12 +72,12 @@ function Signup(props) {
           boxing: state.boxing,
           unboxing: state.unboxing,
           material: state.material,
-          Valuefloor: state.floor,
+          floor: state.floor,
         },
         document: state.document
       }
       await apiService.signUp(newUser);
-      setErrors({ name: "", password: "", email: "", phone: "", street:"", number:"", city:"", state:"", zip:"", document: "", boxing: "", unboxing: "", material: "", Valuefloor: "" });
+      setErrors({ name: "", password: "", email: "", phone: "", street:"", number:"", city:"", state:"", zip:"", document: "", boxing: "", unboxing: "", material: "", floor: "" });
       navigate("/auth/login");
     } catch (err) {
       console.error(err);
@@ -217,7 +217,7 @@ function Signup(props) {
           />
         </div>
 
-        <div className="Valores">
+        <div className="values-container">
             <div>
               <label htmlFor="signupFormBoxing">Boxing Value:</label>
                 <input
@@ -260,8 +260,8 @@ function Signup(props) {
                   type="text"
                   name="valueFloor"
                   id="signupFormValueFloor"
-                  value={state.valueFloor}
-                  error={errors.valueFloor}
+                  value={state.floor}
+                  error={errors.floor}
                   onChange={handleChange}
                 />
             </div>
