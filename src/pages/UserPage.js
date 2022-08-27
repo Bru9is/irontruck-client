@@ -4,9 +4,12 @@ import CreatePost from "../components/CreatePost"
 import apiService from "../services/api.service"
 import Navbar from "../components/Navbar"
 import { useState, useEffect } from "react"
-import axios from "axios"
+import { useNavigate, Link } from "react-router-dom"
+
 
 const UserPage = () => {
+
+    const navigate = useNavigate()
 
     const [posts, setPosts] = useState([])
     
@@ -22,6 +25,7 @@ const UserPage = () => {
         getPosts()
     }, [])
 
+
     return (
     <div>
         <Navbar />    
@@ -29,8 +33,9 @@ const UserPage = () => {
         {posts.map((e) => {
             return(
                 <div>
-                    <PostCard
-                        date = {e.date}
+                    <PostCard 
+                        key = {e._id}
+                        date = {new Date(e.date).toLocaleDateString('pt-br')}
                         origin = {e.origin}
                         destination = {e.destination}
                         truckType = {e.truckType}
@@ -39,6 +44,9 @@ const UserPage = () => {
                         material = {e.material}
                         floors = {e.floors}
                     />
+                    <Link className="btn" to={`/${e._id}/all-proposals`}>
+                        See company proposals
+                    </Link>
                 </div>
             )
         })}

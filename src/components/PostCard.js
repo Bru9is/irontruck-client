@@ -1,5 +1,5 @@
 function PostCard(props) {
-    console.log(props.unboxing, props.boxing, props.material, props.floors)
+
     return (
         <>
             <p><b>Date:</b> {props.date}</p>
