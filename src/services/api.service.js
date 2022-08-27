@@ -48,6 +48,24 @@ class ApiService {
   async getCompany() {
     return await this.api.get("/profile");
   }
+
+  async getAllProposals(postId) {
+    return await this.api.get(`/${postId}/all-proposals`);
+  }
+
+  async getCompanyProposals() {
+    return await this.api.get(`/company/proposals`);
+
+  }
+
+  async acceptProposal(proposalId) {
+    return await this.api.put(`/${proposalId}/accept`);
+  }
+
+  async getCompanyWhoAcceptedProposal(proposalId) {
+    return await this.api.get(`/${proposalId}/accept`);
+  }
+
 }
 
 export default new ApiService();

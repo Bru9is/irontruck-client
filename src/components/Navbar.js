@@ -36,11 +36,34 @@ const Navbar = () => {
 
               { (!isLoading && loggedInUser.token !== '') ? (
                 <>
+
+
+                  {(loggedInUser.user.role === 'user') ? 
+                  <>
                   <li className="nav-item active">
                     <Link className="nav-link" to="/user-page">
                       New post
                     </Link>
                   </li>
+
+                    <li className="nav-item active">
+                      <Link className="nav-link" to="/user-page">
+                        See posts
+                      </Link>
+                    </li> 
+                  </>:   
+                  <>
+                    <li className="nav-item active">
+                      <Link className="nav-link" to="/company/proposals">
+                        See your proposals
+                      </Link>
+                    </li> 
+                    <li className="nav-item active">
+                      <Link className="nav-link" to="/company/search">
+                        Search user posts
+                      </Link>
+                    </li> 
+                  </>}
                   
                   
                 </>
