@@ -84,16 +84,17 @@ const Navbar = () => {
                   Need help?
                 </Link>
               </li>
+              { (!isLoading && loggedInUser.token !== '') &&
+              <>
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/edit-profile">
-                  My profile
-                </Link>
-              </li>
-              <li className="nav-item">
-                    <Link onClick={() => logout() } className="nav-link" to="#">Logout</Link>
-                </li>
-
-                </ul>
+                    <Link className="nav-link active" aria-current="page" to="/edit-profile">
+                      My profile
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                      <Link onClick={() => logout() } className="nav-link" to="#">Logout</Link>
+                  </li> </>}
+            </ul>
           </div>
         </div>
       </nav>
