@@ -29,6 +29,10 @@ class ApiService {
     return await this.api.post("/login", user);
   }
 
+  async editProfile(user) {
+    return await this.api.put("/edit-profile");
+  }
+
   async createPost(post) {
     return await this.api.post("/new-post", post);
   }

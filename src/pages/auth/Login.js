@@ -29,7 +29,7 @@ function Login(props) {
     try {
       const response = await apiService.login(state);
       console.log(response);
-
+      
       authContext.setLoggedInUser({ ...response.data });
       localStorage.setItem(
         "loggedInUser",
@@ -38,9 +38,10 @@ function Login(props) {
       setErrors({ password: "", email: "" });
 
       if (response.data.user.role === "user") navigate('/user-page')
-      else if (response.data.user.role === 'company') navigate("/company-page"); 
+      else if (response.data.user.role === 'company') navigate("/company/proposals"); 
 
     } catch (err) {
+      alert('Your email or password is incorrect, please try again')
       console.error(err);
       setErrors({ ...err.response.data.errors });
     }
@@ -78,7 +79,7 @@ function Login(props) {
       </div>
 
       <div>
-        <button className="login-button btn" type="submit">Login!</button>
+        <button className="login-button btn" type="submit">Login</button>
       </div>
     </form>
     </div>
