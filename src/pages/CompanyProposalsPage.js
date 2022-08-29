@@ -22,6 +22,7 @@ const CompanyProposalsPage = () => {
     return (
         <div>
             <Navbar />
+            <div className = 'proposals-container'>
             {proposals.map((e) => {
             return(
                 <div>
@@ -37,7 +38,7 @@ const CompanyProposalsPage = () => {
                 </div>
             )
         })}
-
+        </div>
         </div>
     )
 }

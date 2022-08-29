@@ -53,25 +53,28 @@ function Login(props) {
     <div className="login-container">
       
     <form onSubmit={handleSubmit}>
-      <div className = "login-form-container">
-          <label htmlFor="signupFormEmail">What's your e-mail address?</label>
 
-        <input
-          type="email"
+      <div className="form-group">
+        <label htmlFor="signupFormEmail">What's your e-mail address?</label>        
+        <input 
+          type="email" 
+          className="form-control" 
+          placeholder="Enter your email address"
           name="email"
-          id="signupFormEmail"
+          id="loginFormEmail"
           value={state.email}
           error={errors.email}
-          onChange={handleChange}
-        />
+          onChange={handleChange}/>
       </div>
 
-      <div className = "login-form-container">
-        <label htmlFor="signupFormPassword">Enter your password</label>
-        <input
+      <div className = "form-group">
+        <label htmlFor="signupFormPassword">What's your password?</label>
+        <input 
+          className = 'form-control'
           type="password"
           name="password"
-          id="signupFormPassword"
+          placeholder="Enter your password"
+          id="loginFormPassword"
           value={state.password}
           error={errors.password}
           onChange={handleChange}
@@ -79,7 +82,7 @@ function Login(props) {
       </div>
 
       <div>
-        <button className="login-button btn" type="submit">Login</button>
+        <button className="btn btn-primary btn-block" type="submit">Login</button>
       </div>
     </form>
     </div>

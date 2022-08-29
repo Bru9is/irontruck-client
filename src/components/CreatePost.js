@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import apiService from "../services/api.service.js"; 
 
 
@@ -28,8 +27,6 @@ const Post = (props) => {
     floors: null,
     comment: null
   });
-
-  const navigate = useNavigate();
 
   function handleChange(event) {
     setState({
@@ -65,20 +62,21 @@ const Post = (props) => {
           await apiService.createPost(newPost);
 
           setErrors({date: "", origin: "", destination: "", truckType: "", boxing:"", unboxing:"", material:"", comment:"", floors: ""});
-          navigate("/success");
+          alert('Your post has been succesffully created')
         } catch (err) {
+          alert('Something went wrong')
           console.error(err);
           setErrors({ ...err.response.data.errors });
         }
       }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>Create new post</h1>
-
-            <div>
-                <label htmlFor="createPostFormDate">Desired date</label>
-                <input
+      <div id ='create-post-form'>
+        <h1>Create a new post</h1>
+        <form className = "gradient-border" onSubmit={handleSubmit}>
+            <div className = 'form-item'>
+                <label className = 'post-label' htmlFor="createPostFormDate">Desired date</label>
+                <input className = 'form-control'
                 type="date"
                 name="date"
                 id="createPostFormDate"
@@ -88,9 +86,9 @@ const Post = (props) => {
                 />
             </div>
 
-            <div>
-                <label htmlFor="createPostFormOrigin">Origin</label>
-                <input
+            <div className = 'form-item'>
+                <label className = 'post-label' htmlFor="createPostFormOrigin">Origin</label>
+                <input className = 'form-control'
                 type="text"
                 name="origin"
                 id="createPostFormOrigin"
@@ -100,9 +98,9 @@ const Post = (props) => {
                 />
             </div>
 
-            <div>
-                <label htmlFor="createPostFormDestination">Destination</label>
-                <input
+            <div className = 'form-item'>
+                <label className = 'post-label' htmlFor="createPostFormDestination">Destination</label>
+                <input className = 'form-control'
                 type="text"
                 name="destination"
                 id="createPostFormDestination"
@@ -112,9 +110,9 @@ const Post = (props) => {
                 />
             </div>
 
-            <div>
-                <label htmlFor="createPostFormTruckType">Truck type</label>
-                <select
+            <div className = 'form-item'>
+                <label className = 'post-label' htmlFor="createPostFormTruckType">Select a truck type</label>
+                <select className = 'form-control'
                 type="text"
                 name="truckType"
                 id="createPostFormTruckType"
@@ -129,9 +127,9 @@ const Post = (props) => {
                 </select>
             </div>
 
-            <div>
-                <label htmlFor="createPostFormBoxing">Boxing</label>
-                <input
+            <div className = 'form-item'>
+                <label className = 'post-label' htmlFor="createPostFormBoxing">Need boxing?</label>
+                <input className = 'form-check-input'
                 type="checkbox"
                 name="boxing"
                 id="createPostFormBoxing"
@@ -142,9 +140,9 @@ const Post = (props) => {
                 />
             </div>
 
-            <div>
-                <label htmlFor="createPostFormUnboxing">Unboxing</label>
-                <input
+            <div className = 'form-item'>
+                <label className = 'post-label' htmlFor="createPostFormUnboxing">Need unboxing?</label>
+                <input className = 'form-check-input'
                 type="checkbox"
                 name="unboxing"
                 id="createPostFormUnboxing"
@@ -155,9 +153,9 @@ const Post = (props) => {
                 />
             </div>
 
-            <div>
-                <label htmlFor="createPostFormMaterial">Material</label>
-                <input
+            <div className = 'form-item'>
+                <label className = 'post-label' htmlFor="createPostFormMaterial">Need material?</label>
+                <input className = 'form-check-input'
                 type="checkbox"
                 name="material"
                 id="createPostFormMaterial"
@@ -168,9 +166,9 @@ const Post = (props) => {
                 />
             </div>
 
-            <div>
-                <label htmlFor="createPostFormFloor">Floors</label>
-                <input
+            <div className = 'form-item'>
+                <label className = 'post-label' htmlFor="createPostFormFloor">Floors</label>
+                <input className = 'form-control'
                 type="number"
                 name="floors"
                 id="createPostFormFloor"
@@ -180,9 +178,9 @@ const Post = (props) => {
                 />
             </div>
 
-            <div>
-                <label htmlFor="createPostFormComment">Comment</label>
-                <input
+            <div className = 'form-item'>
+                <label className = 'post-label' htmlFor="createPostFormComment">Comment</label>
+                <input className = 'form-control'
                 type="text"
                 name="comment"
                 id="createPostFormComment"
@@ -193,9 +191,10 @@ const Post = (props) => {
             </div>
 
             <div>
-                <button type="submit">Create post</button>
+                <button className = 'btn btn-primary btn-lg btn-block' id = 'create-post-btn' type="submit">Create post</button>
             </div>
             </form>
+            </div>
     )
 }
 

@@ -25,12 +25,13 @@ const PostProposalsPage = () => {
     return (
         <div>
             <Navbar />
+            <div className = 'proposals-container'>
             {proposals.map((e) => {
             return(
-                <div>
+                <div className = 'proposal-card'>
                     <ProposalCard 
                         key = {e._id}
-                        date = {e.createdAt}
+                        date = {new Date(e.createdAt).toLocaleDateString('pt-br')}
                         origin = {e.post.origin}
                         destination = {e.post.destination}
                         status = {e.status}
@@ -41,7 +42,7 @@ const PostProposalsPage = () => {
                 </div>
             )
         })}
-
+        </div>
         </div>
     )
 }

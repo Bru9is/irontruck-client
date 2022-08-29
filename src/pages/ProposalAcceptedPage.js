@@ -32,18 +32,21 @@ const ProposalAcceptedPage = (name, phone, email) => {
     return (
         <>
         <Navbar />
-        <p>Proposal has been successfully accepted!</p>
-        <p>Please contact the company using the details below:</p>
-        <div>
-            <p>Name: {company.name}</p>
-            <p>Phone: {company.phone}</p>
-            <p>Email: {company.email}</p>
-        </div>
 
-        <Link to="/user-page" style={{color: '#9a0414'}}>
-            Back to the main page
-        </Link>
-        
+        <div className = 'accepted-container'>
+        <h4 style = {{color:'green'}}>Proposal has been successfully accepted!</h4>
+        <p style = {{textAlign: 'center'}}>Please contact the company to discuss the next steps using the details below:</p>
+            <div className = 'gradient-border company-details'>
+            <p> <span style = {{color: '#9a0414'}}> Name: </span><span>{company.name}</span> </p>
+            <p> <span style = {{color: '#9a0414'}}> Phone: </span><span>{company.phone}</span> </p>
+            <p> <span style = {{color: '#9a0414'}}> Email: </span><span>{company.email}</span> </p>
+            </div>
+        </div>
+        <div className="text-center">
+            <Link to="/user-page" style={{color: '#9a0414', textAlign:'center'}}>
+                Back to the main page
+            </Link>
+        </div>
         </>
     )
 }

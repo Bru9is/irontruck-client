@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import '../assets/styles/index.css'
 import bgPicture from '../../src/assets/images/irontruck-background.png'
 
+
 function Home() {
   return (
     <div className="text-center">
@@ -11,11 +12,11 @@ function Home() {
       <img src = {bgPicture} alt = 'irontruck-background' width='80%'/>
       <div className="d-flex flex-column align-items-center flex-container">
         
-          <Link className="btn" to="/auth/signup?type=company">
+          <Link style={{ textDecoration: 'none' }} className="slide-btn" to="/auth/signup?type=company">
             Signup as a company
           </Link>
 
-          <Link className="btn" to="/auth/signup?type=user">
+          <Link style={{ textDecoration: 'none' }} className="slide-btn" to="/auth/signup?type=user">
             Signup as a user
           </Link>
       </div>

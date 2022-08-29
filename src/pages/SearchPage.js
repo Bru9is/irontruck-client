@@ -3,7 +3,6 @@ import PostCard from "../components/PostCard"
 import apiService from "../services/api.service"
 import Navbar from "../components/Navbar"
 import { useState, useEffect } from "react"
-import axios from "axios"
 
 const SearchPage = () => {
 
@@ -23,12 +22,15 @@ const SearchPage = () => {
 
     return (
     <div>
-        <Navbar />    
+        <Navbar />  
+        <div className='search-post-container'> 
+
         {posts.map((e) => {
+            
             return(
-                <div>
+                <div className = 'search-post-card gradient-border'>
                     <PostCard
-                        date = {e.date}
+                        date = {new Date(e.date).toLocaleDateString('pt-br')}
                         origin = {e.origin}
                         destination = {e.destination}
                         truckType = {e.truckType}
@@ -43,6 +45,7 @@ const SearchPage = () => {
                 </div>
             )
         })}
+        </div> 
     </div>
     )
 }
