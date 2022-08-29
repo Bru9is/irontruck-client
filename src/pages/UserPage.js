@@ -4,12 +4,10 @@ import CreatePost from "../components/CreatePost"
 import apiService from "../services/api.service"
 import Navbar from "../components/Navbar"
 import { useState, useEffect } from "react"
-import { useNavigate, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 const UserPage = () => {
-
-    const navigate = useNavigate()
 
     const [posts, setPosts] = useState([])
     
@@ -28,11 +26,16 @@ const UserPage = () => {
 
     return (
     <div>
-        <Navbar />    
-        <CreatePost />
+        <Navbar />   
+        <div className = 'user-page-container'>
+        <CreatePost style = {{width: "50%"}}/>
+        <div className = 'post-container'>
+        <h1>Your posts</h1>
         {posts.map((e) => {
             return(
-                <div>
+                
+                <div className = 'post-card gradient-border'>
+                    
                     <PostCard 
                         key = {e._id}
                         date = {new Date(e.date).toLocaleDateString('pt-br')}
@@ -44,15 +47,18 @@ const UserPage = () => {
                         material = {e.material}
                         floors = {e.floors}
                     />
-                    <Link className="btn" to={`/${e._id}/all-proposals`}>
+                    <Link className="btn btn-primary btn-sm" to={`/${e._id}/all-proposals`}>
                         See company proposals
                     </Link>
                 </div>
             )
         })}
+        </div>
     </div>
+    </div> 
     )
 }
+
 
 export default UserPage
 

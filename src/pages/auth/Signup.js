@@ -89,138 +89,146 @@ function Signup(props) {
     <div>
       <Navbar />
 
-    <div className = "signup-container">
-    
+    <div className = 'signup-container'>
+
     <form onSubmit={handleSubmit}>
-      <h1>{state.role.toUpperCase()} SIGNUP</h1>
+    <h1>{state.role.toUpperCase()} SIGNUP</h1>
+    <div className="form-group">
+    <label for="inputName">{state.role==='user'? "Name" : "Company name"}</label>
+    <input 
+      type="text" 
+      className="form-control" 
+      placeholder="Enter your name"
+      name="name"
+      id="signupFormName"
+      value={state.name}
+      error={errors.name}
+      onChange={handleChange}
+      />
+  </div>
+  <div className="form-row">
+    <div className="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input 
+        type="email" 
+        className="form-control" 
+        placeholder="Enter your email address"
+        name="email"
+        id="signupFormEmail"
+        value={state.email}
+        error={errors.email}
+        onChange={handleChange}/>
+    </div>
+    <div className="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input 
+        type="password" 
+        className="form-control" 
+        placeholder="Enter your password"
+        name="name"
+        id="signupFormPassword"
+        value={state.password}
+        error={errors.password}
+        onChange={handleChange}/>
+    </div>
+  </div>
+  <div className="form-group">
+    <label for="inputPhone">Phone</label>
+    <input 
+      type="text" 
+      className="form-control" 
+      placeholder="Enter your phone number"
+      name="phone"
+      id="signupFormPhone"
+      value={state.phone}
+      error={errors.phone}
+      onChange={handleChange}/>
+  </div>
+  
+  <div className="form-row">
+  <div className="form-group col-md-6">
+    <label for="inputStreet">Street</label>
+    <input 
+      type="text" 
+      className="form-control" 
+      placeholder="Enter your street"
+      name="street"
+      id="signupFormStreet"
+      value={state.street}
+      error={errors.street}
+      onChange={handleChange}/>
+  </div>
+  <div className="form-group col-md-6">
+    <label for="inputNumber">Number</label>
+    <input 
+      type="text" 
+      placeholder="Enter your house number"
+      className="form-control" 
+      name="number"
+      id="signupFormNumber"
+      value={state.number}
+      error={errors.number}
+      onChange={handleChange}/>
+  </div>
+</div>
+  <div className="form-row">
+    <div className="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input 
+        type="text" 
+        className="form-control" 
+        placeholder="Enter your city"
+        name="city"
+        id="signupFormCity"
+        value={state.city}
+        error={errors.city}
+        onChange={handleChange}/>
+    </div>
+    <div className="form-group col-md-4">
+      <label for="inputState">State</label>
+      <input 
+        type="text" 
+        className="form-control" 
+        placeholder="Enter your state"
+        name="state"
+        id="signupFormState"
+        value={state.state}
+        error={errors.state}
+        onChange={handleChange}/>
+    </div>
+    <div className="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input 
+        type="text" 
+        className="form-control" 
+        name="zip"
+        id="signupFormZip"
+        pattern="	^\d{5}-\d{3}$"
+        value={state.zip}
+        error={errors.zip}
+        onChange={handleChange}/>
+    </div>
+  </div>
 
-      <div className = "signup-form-container">
-
-        <div>
-          <label htmlFor="signupFormName">Name</label>
-          <input
-            type="text"
-            name="name"
-            id="signupFormName"
-            value={state.name}
-            error={errors.name}
-            onChange={handleChange}
+  <div className="form-group">
+    <label htmlFor="signupFormDocument">{state.role==='user'? "CPF" : "CNPJ"}</label>
+      <input
+        className='form-control'
+        type="text"
+        name="document"
+        id="signupFormDocument"
+        value={state.document}
+        error={errors.document}
+        onChange={handleChange}
           />
         </div>
 
-        <div>
-          <label htmlFor="signupFormEmail">E-mail Address</label>
-          <input
-            type="email"
-            name="email"
-            id="signupFormEmail"
-            value={state.email}
-            error={errors.email}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="signupFormPassword">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="signupFormPassword"
-            value={state.password}
-            error={errors.password}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="signupFormPhone">Phone</label>
-          <input
-            type="text"
-            name="phone"
-            id="signupFormPhone"
-            value={state.phone}
-            error={errors.phone}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="signupFormStreet">Street</label>
-          <input
-            type="text"
-            name="street"
-            id="signupFormStreet"
-            value={state.street}
-            error={errors.street}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="signupFormNumber">Number</label>
-          <input
-            type="text"
-            name="number"
-            id="signupFormNumber"
-            value={state.number}
-            error={errors.number}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="signupFormCity">City</label>
-          <input
-            type="text"
-            name="city"
-            id="signupFormCity"
-            value={state.city}
-            error={errors.city}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="signupFormCity">State</label>
-          <input
-            type="text"
-            name="state"
-            id="signupFormState"
-            value={state.state}
-            error={errors.state}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="signupFormCity">Zipcode</label>
-          <input
-            type="text"
-            name="zip"
-            id="signupFormZip"
-            pattern="	^\d{5}-\d{3}$"
-            value={state.zip}
-            error={errors.zip}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="signupFormDocument">{state.role==='user'? "CPF" : "CNPJ"}</label>
-          <input
-            type="text"
-            name="document"
-            id="signupFormDocument"
-            value={state.document}
-            error={errors.document}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="values-container">
-            <div>
-              <label htmlFor="signupFormBoxing">Boxing Value:</label>
+      {(state.role==='company') && <>
+      <div className='form-row'> 
+        <div className = "form-group col-md-3">
+              <label htmlFor="signupFormBoxing">Boxing value:</label>
                 <input
+                  className='form-control'
                   type="text"
                   name="boxing"
                   id="signupFormboxing"
@@ -230,9 +238,10 @@ function Signup(props) {
                 />
             </div>
 
-            <div>
-              <label htmlFor="signupFormUnboxing">Unboxing Value:</label>
+            <div className = "form-group col-md-3">
+              <label htmlFor="signupFormUnboxing">Unboxing value:</label>
                 <input
+                  className='form-control'
                   type="text"
                   name="unboxing"
                   id="signupFormUnboxing"
@@ -242,9 +251,10 @@ function Signup(props) {
                 />
             </div>
 
-            <div>
-              <label htmlFor="signupFormMaterial">Material Value:</label>
+            <div className = "form-group col-md-3">
+              <label htmlFor="signupFormMaterial">Material value:</label>
                 <input
+                  className='form-control'
                   type="text"
                   name="material"
                   id="signupFormMaterial"
@@ -254,9 +264,10 @@ function Signup(props) {
                 />
             </div>  
 
-            <div>
-              <label htmlFor="signupFormValueFloor">Value per Floors:</label>
+            <div className = "form-group col-md-3">
+              <label htmlFor="signupFormValueFloor">Value per floor:</label>
                 <input
+                  className='form-control'
                   type="text"
                   name="valueFloor"
                   id="signupFormValueFloor"
@@ -265,13 +276,13 @@ function Signup(props) {
                   onChange={handleChange}
                 />
             </div>
-        </div>
+            </div>
+            </>}
 
-        <div>
-          <button className = 'btn' type="submit">Signup!</button>
-        </div>
-      </div>
-    </form>
+  <button type="submit" className="btn btn-primary btn-block btn-lg">Sign up</button>
+</form>
+
+
     </div>
     </div>
   );

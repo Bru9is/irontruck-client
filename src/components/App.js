@@ -8,13 +8,12 @@ import Signup from '../pages/auth/Signup'
 import Login from '../pages/auth/Login'
 import PrivateRoute from '../pages/auth/PrivateRoute'
 import PrivatePage from "../pages/PrivatePage";
-import SuccessPage from "../pages/SuccessPage";
 import UserPage from "../pages/UserPage";
 import ErrorPage from "../pages/ErrorPage";
 import EditProfilePage from "../pages/EditProfilePage";
 import HelpPage from "../pages/HelpPage";
 import SearchPage from "../pages/SearchPage";
-import ProposalsPage from "../pages/PostProposalsPage";
+import PostProposalsPage from "../pages/PostProposalsPage";
 import { AuthContextComponent } from "../contexts/authContext";
 import CompanyProposalsPage from "../pages/CompanyProposalsPage";
 import ProposalAcceptedPage from "../pages/ProposalAcceptedPage";
@@ -30,13 +29,12 @@ function App() {
           <Route path="/edit-profile" element={<EditProfilePage />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/company/proposals" element={<CompanyProposalsPage />} />
-          <Route path="/:postId/all-proposals" element={<ProposalsPage />} />
+          <Route path="/:postId/all-proposals" element={<PostProposalsPage />} />
           <Route path="/:proposalId/accept" element={<ProposalAcceptedPage />} />
           <Route path="/auth">
             <Route path='signup' element={<Signup />} />
             <Route path='login' element={<Login />} />
           </Route>
-            <Route path='/success' element={<SuccessPage />} />
             <Route path='/user-page' element={<UserPage />} />
             <Route path='/company/search' element={<SearchPage />} />
           <Route path='/test' element={
