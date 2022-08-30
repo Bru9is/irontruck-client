@@ -30,11 +30,19 @@ class ApiService {
   }
 
   async editProfile(user) {
-    return await this.api.put("/edit-profile");
+    return await this.api.put("/edit-profile", user);
   }
 
   async createPost(post) {
     return await this.api.post("/new-post", post);
+  }
+
+  async getPostById(postId) {
+    return await this.api.get(`/user-posts/${postId}`);
+  }
+
+  async editPost(postId, post) {
+    return await this.api.put(`/edit-post/${postId}`, post);
   }
 
   async createProposal(proposal) {

@@ -17,6 +17,7 @@ import PostProposalsPage from "../pages/PostProposalsPage";
 import { AuthContextComponent } from "../contexts/authContext";
 import CompanyProposalsPage from "../pages/CompanyProposalsPage";
 import ProposalAcceptedPage from "../pages/ProposalAcceptedPage";
+import EditPostPage from "../pages/EditPostPage.js"
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/help" element={<HelpPage />} />
           <Route path="/company/proposals" element={<CompanyProposalsPage />} />
           <Route path="/:postId/all-proposals" element={<PostProposalsPage />} />
+          <Route path="/:postId/edit-post" element={<EditPostPage />} />
           <Route path="/:proposalId/accept" element={<ProposalAcceptedPage />} />
           <Route path="/auth">
             <Route path='signup' element={<Signup />} />

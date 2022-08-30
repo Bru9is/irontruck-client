@@ -17,7 +17,7 @@ const ProposalCard = ({date, origin, destination, companyName, total, proposalId
     
     return (
         <div className = 'gradient-border proposal-card'>
-            <p><span style = {{color: '#9a0414'}}>Date: </span><span>{new Date(date).toLocaleDateString('pt-br')}</span></p>
+            <p><span style = {{color: '#9a0414'}}>Date: </span><span>{date}</span></p>
             <p><span style = {{color: '#9a0414'}}>Origin: </span><span>{origin}</span></p>
             <p><span style = {{color: '#9a0414'}}>Destination: </span><span>{destination}</span></p>
             {companyName && <p><span style = {{color: '#9a0414'}}>Company name: </span><span>{companyName}</span></p>}
@@ -27,8 +27,8 @@ const ProposalCard = ({date, origin, destination, companyName, total, proposalId
             {status ==='pending' && <p><span style = {{color: '#9a0414'}}>Status: </span><span style = {{backgroundColor: 'blue', color: 'white'}}>{status}</span></p>}
             {(companyName && status === 'pending') && (
               <>
-                <button className = 'btn btn-primary btn-sm' onClick = {handleClick}>Accept proposal</button>
-                <button className = 'btn btn-danger btn-sm'>Reject proposal</button>
+                <button className = 'btn btn-primary btn-sm accept-reject' onClick = {handleClick}>Accept proposal</button>
+                <button className = 'btn btn-danger btn-sm accept-reject'>Reject proposal</button>
               </>)}
     </div>
     )

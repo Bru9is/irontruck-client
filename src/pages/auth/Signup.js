@@ -161,7 +161,7 @@ function Signup(props) {
   <div className="form-group col-md-6">
     <label for="inputNumber">Number</label>
     <input 
-      type="text" 
+      type="number" 
       placeholder="Enter your house number"
       className="form-control" 
       name="number"
