@@ -36,7 +36,8 @@ const UserPage = () => {
                 
                 <div className = 'post-card gradient-border'>
                     
-                    <PostCard 
+                    <PostCard
+                        postId={e._id} 
                         key = {e._id}
                         date = {new Date(e.date).toLocaleDateString('pt-br')}
                         origin = {e.origin}

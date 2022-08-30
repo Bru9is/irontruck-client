@@ -307,3 +307,16 @@ h4 {
     width: 100%;
     padding: 10px;
 }
+
+#edit-your-profile {
+    margin-top: 50px;
+    margin-bottom: 0px !important;
+}
+
+#edit-post {
+    margin-top: 50px;
+}
+
+.accept-reject{
+    margin-right: 20px;
+}

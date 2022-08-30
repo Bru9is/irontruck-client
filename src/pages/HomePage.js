@@ -9,7 +9,7 @@ function Home() {
   return (
     <div className="text-center">
       <Navbar />
-      <img src = {bgPicture} alt = 'irontruck-background' width='80%'/>
+      <img src = {bgPicture} alt = 'irontruck-background' width='50%'/>
       <div className="d-flex flex-column align-items-center flex-container">
         
           <Link style={{ textDecoration: 'none' }} className="slide-btn" to="/auth/signup?type=company">

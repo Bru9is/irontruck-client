@@ -1,5 +1,4 @@
 import Navbar from "../components/Navbar.js"
-import ProposalCard from "../components/ProposalCard.js"
 import {useState, useEffect} from "react"
 import apiService from "../services/api.service.js"
 import { useParams } from "react-router-dom"
