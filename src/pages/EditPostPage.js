@@ -7,6 +7,11 @@ const EditPostPage = () => {
 
     const navigate = useNavigate()
 
+    const dateFormat = (date) => {
+        const dateIso = new Date(date).toISOString()
+        return dateIso.slice(0, 10)
+    }
+
     const [post, setPost] = useState({ 
         date: null, 
         origin: "", 
@@ -19,9 +24,16 @@ const EditPostPage = () => {
         comment:"" });
 
         const { postId } = useParams()
-    
+
+    function handleCheck(event) {
+        setPost({
+            ...post, [event.currentTarget.name]: !post[event.currentTarget.name]
+        })
+    }    
+        
     useEffect(() => {
         async function getPostById(postId){
+            console.log(postId)
             try {
                 const result = await apiService.getPostById(postId)
                 setPost(result.data) 
@@ -29,8 +41,8 @@ const EditPostPage = () => {
                 console.log(err)
             }
         }
-        getPostById()
-    }, [])
+        getPostById(postId)
+    }, [postId])
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -48,7 +60,7 @@ const EditPostPage = () => {
             comment: post.comment
           }
 
-          await apiService.editPost(newPost, postId);
+          await apiService.editPost(postId, newPost);
 
           alert('Your post has been succesffully updated')
           navigate('/user-page')
@@ -70,7 +82,7 @@ const EditPostPage = () => {
                 type="date"
                 name={post.date}
                 id="createPostFormDate"
-                value={post.date}
+                value={dateFormat(post.date)}
                 onChange={(e) => setPost({ ...post, date: e.target.value})}                />
             </div>
 
@@ -114,11 +126,11 @@ const EditPostPage = () => {
                 <label className = 'post-label' htmlFor="createPostFormBoxing">Need boxing?</label>
                 <input className = 'form-check-input'
                 type="checkbox"
-                name={post.boxing}
+                name="boxing"
                 id="createPostFormBoxing"
                 value={post.boxing}
                 checked={post.boxing}
-                onChange={(e) => setPost({ ...post, boxing: e.target.value})}
+                onChange={handleCheck}
                 />
             </div>
 
@@ -126,22 +138,23 @@ const EditPostPage = () => {
                 <label className = 'post-label' htmlFor="createPostFormUnboxing">Need unboxing?</label>
                 <input className = 'form-check-input'
                 type="checkbox"
-                name={post.unboxing}
+                name="unboxing"
                 id="createPostFormUnboxing"
                 value={post.unboxing}
                 checked={post.unboxing}
-                onChange={(e) => setPost({ ...post, unboxing: e.target.value})}                />
+                onChange={handleCheck}
+                />
             </div>
 
             <div className = 'form-item'>
                 <label className = 'post-label' htmlFor="createPostFormMaterial">Need material?</label>
                 <input className = 'form-check-input'
                 type="checkbox"
-                name={post.material}
+                name="material"
                 id="createPostFormMaterial"
                 value={post.material}
                 checked={post.material}
-                onChange={(e) => setPost({ ...post, material: e.target.value})}
+                onChange={handleCheck}
                 />
             </div>
 
