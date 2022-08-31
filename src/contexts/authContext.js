@@ -1,10 +1,16 @@
 import React, { useState, createContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 function AuthContextComponent(props) {
   const [loggedInUser, setLoggedInUser] = useState({ token: "", user: {} });
   const [isLoading, setIsLoading] = useState(true)
+  
+  const logout = () => {
+    localStorage.removeItem("loggedInUser")
+    
+  } 
 
   useEffect(() => {
     const storedUser = localStorage.getItem("loggedInUser");
@@ -19,7 +25,7 @@ function AuthContextComponent(props) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isLoading,loggedInUser, setLoggedInUser }}>
+    <AuthContext.Provider value={{ isLoading, loggedInUser, setLoggedInUser, logout }}>
       {props.children}
     </AuthContext.Provider>
   );

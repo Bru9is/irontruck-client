@@ -63,6 +63,7 @@ const Post = (props) => {
 
           setErrors({date: "", origin: "", destination: "", truckType: "", boxing:"", unboxing:"", material:"", comment:"", floors: ""});
           alert('Your post has been succesffully created')
+          props.setRefresh(!props.refresh)
         } catch (err) {
           alert('Something went wrong')
           console.error(err);
