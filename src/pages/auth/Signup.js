@@ -125,7 +125,7 @@ function Signup(props) {
         type="password" 
         className="form-control" 
         placeholder="Enter your password"
-        name="name"
+        name="password"
         id="signupFormPassword"
         value={state.password}
         error={errors.password}
@@ -203,7 +203,6 @@ function Signup(props) {
         className="form-control" 
         name="zip"
         id="signupFormZip"
-        pattern="	^\d{5}-\d{3}$"
         value={state.zip}
         error={errors.zip}
         onChange={handleChange}/>

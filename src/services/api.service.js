@@ -54,7 +54,7 @@ class ApiService {
   }
 
   async getActivePosts() {
-    return await this.api.get("/all-posts?active=true");
+    return await this.api.get("/all-posts?status=active");
   }
 
   async getCompany() {
