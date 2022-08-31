@@ -9,6 +9,7 @@ const SearchPage = () => {
 
     const [posts, setPosts] = useState([])
     const { loggedInUser} = useContext(AuthContext)
+    
 
     useEffect(() => {
         async function getPosts(){

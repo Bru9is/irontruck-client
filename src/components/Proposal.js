@@ -1,15 +1,18 @@
 import { useState } from "react";
 import apiService from "../services/api.service";
+import { useNavigate } from "react-router-dom";
 
 function Proposal(props) {
     const [total, setTotal] = useState("")
-
+    const navigate = useNavigate()
+    
     async function handleSubmit(event){
         event.preventDefault();
         try { 
             const newProposal = {  postId: props.postId, total} 
             await apiService.createProposal(newProposal)
             alert('Your proposal has been successfully sent!')
+            navigate("/company/proposals")
         }catch(err) {
             alert('You cannot send more than 1 proposal')
             console.log(err);

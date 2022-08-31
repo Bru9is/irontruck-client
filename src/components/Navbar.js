@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/authContext";
 import logo from '../assets/images/irontruck-logo.png'
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const { isLoading, loggedInUser, logout } = useContext(AuthContext)
-
+    const navigate = useNavigate();
+    
     return (
       <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#000000'}}>
         <div className="container-fluid">
@@ -92,7 +94,10 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                      <Link onClick={() => logout() } className="nav-link" to="#">Logout</Link>
+                      <Link onClick={() => {
+                        logout()
+                        navigate("/")
+                        }} className="nav-link" to="#">Logout</Link>
                   </li> </>}
             </ul>
           </div>
