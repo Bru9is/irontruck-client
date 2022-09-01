@@ -6,6 +6,17 @@ import Navbar from "../../components/Navbar";
 function Signup(props) {
 
   const [searchParams] = useSearchParams()
+  const [imageUrl, setImageUrl] = useState('')
+  
+  const handleFileUpload = async (e) => {
+        
+    const uploadData = new FormData()
+
+    uploadData.append('imageUrl', e.target.files[0])
+    const response = await apiService.uploadFile(uploadData)
+
+    setImageUrl(response.filePath)
+  }
 
   const [state, setState] = useState({ 
     name: "", 
@@ -21,6 +32,7 @@ function Signup(props) {
     unboxing: "",
     material: "",
     valueFloor: "",
+    image: "",
     role: searchParams.get('type'), 
     document: "" });
 
@@ -40,6 +52,7 @@ function Signup(props) {
     material: null,
     valueFloor: null,
     document: null,
+    image: null,
   });
 
   const navigate = useNavigate();
@@ -53,7 +66,7 @@ function Signup(props) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+    
     try {
       const newUser = {
         name: state.name,
@@ -74,10 +87,12 @@ function Signup(props) {
           material: state.material,
           floor: state.floor,
         },
-        document: state.document
+        document: state.document,
+        image: imageUrl,
       }
+      
       await apiService.signUp(newUser);
-      setErrors({ name: "", password: "", email: "", phone: "", street:"", number:"", city:"", state:"", zip:"", document: "", boxing: "", unboxing: "", material: "", floor: "" });
+      setErrors({ name: "", password: "", email: "", phone: "", street:"", number:"", city:"", state:"", zip:"", document: "", boxing: "", unboxing: "", material: "", floor: "", image:"" });
       navigate("/auth/login");
     } catch (err) {
       console.error(err);
@@ -219,64 +234,17 @@ function Signup(props) {
         value={state.document}
         error={errors.document}
         onChange={handleChange}
-          />
-        </div>
+     />
+  </div>
 
-      {(state.role==='company') && <>
-      <div className='form-row'> 
-        <div className = "form-group col-md-3">
-              <label htmlFor="signupFormBoxing">Boxing value:</label>
-                <input
-                  className='form-control'
-                  type="text"
-                  name="boxing"
-                  id="signupFormboxing"
-                  value={state.boxing}
-                  error={errors.boxing}
-                  onChange={handleChange}
-                />
-            </div>
-
-            <div className = "form-group col-md-3">
-              <label htmlFor="signupFormUnboxing">Unboxing value:</label>
-                <input
-                  className='form-control'
-                  type="text"
-                  name="unboxing"
-                  id="signupFormUnboxing"
-                  value={state.unboxing}
-                  error={errors.unboxing}
-                  onChange={handleChange}
-                />
-            </div>
-
-            <div className = "form-group col-md-3">
-              <label htmlFor="signupFormMaterial">Material value:</label>
-                <input
-                  className='form-control'
-                  type="text"
-                  name="material"
-                  id="signupFormMaterial"
-                  value={state.material}
-                  error={errors.material}
-                  onChange={handleChange}
-                />
-            </div>  
-
-            <div className = "form-group col-md-3">
-              <label htmlFor="signupFormValueFloor">Value per floor:</label>
-                <input
-                  className='form-control'
-                  type="text"
-                  name="valueFloor"
-                  id="signupFormValueFloor"
-                  value={state.floor}
-                  error={errors.floor}
-                  onChange={handleChange}
-                />
-            </div>
-            </div>
-            </>}
+  <div className="form-group">
+    <label for="inputImage">Image upload</label>
+      <input 
+        type="file" 
+        name="imageUrl" 
+        onChange={ handleFileUpload } 
+        />  
+  </div>
 
   <button type="submit" className="btn btn-primary btn-block btn-lg">Sign up</button>
 </form>
