@@ -7,7 +7,7 @@ import { AuthContext } from "../../contexts/authContext";
 
 function Login(props) {
   const authContext = useContext(AuthContext);
-
+  
   const [state, setState] = useState({ password: "", email: "" });
   const [errors, setErrors] = useState({
     email: null,

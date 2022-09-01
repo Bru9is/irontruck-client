@@ -53,6 +53,7 @@ const UserPage = () => {
                         material = {e.material}
                         floors = {e.floors}
                         role = {loggedInUser.user.role}
+                        image = {loggedInUser.user.image}
 
                     />
                     <Link className="btn btn-primary btn-sm" to={`/${e._id}/all-proposals`}>

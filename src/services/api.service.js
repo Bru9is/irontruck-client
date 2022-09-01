@@ -78,6 +78,11 @@ class ApiService {
     return await this.api.get(`/${proposalId}/accept`);
   }
 
+  async uploadFile(fileData) {
+    const res = await this.api.post('/user/upload', fileData)
+    return res.data
+  }
+
 }
 
 export default new ApiService();
