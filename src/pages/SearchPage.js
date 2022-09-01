@@ -23,10 +23,18 @@ const SearchPage = () => {
         getPosts()
     }, [])
 
+
+
     return (
     <div>
         <Navbar />  
         <div className='search-post-container'> 
+
+        {posts.length === 0 && 
+        <div>
+            <h1 id= 'not-available'>No posts available 😔</h1>
+        </div>
+    }
 
         {posts.map((e) => {
             

@@ -1,9 +1,14 @@
 import Navbar from "../components/Navbar.js"
 import ProposalCard from "../components/ProposalCard.js"
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
 import apiService from "../services/api.service.js"
+import { AuthContext } from "../contexts/authContext";
+
 
 const CompanyProposalsPage = () => {
+
+
+    const { loggedInUser } = useContext(AuthContext)
 
     const [proposals, setProposals] = useState([])
     
@@ -34,6 +39,7 @@ const CompanyProposalsPage = () => {
                         total = {e.total}
                         status = {e.status}
                         proposalId = {e._id}
+                        role = {loggedInUser.user.role}
                     />
                 </div>
             )

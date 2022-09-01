@@ -17,10 +17,6 @@ function Signup(props) {
     city:"", 
     state:"", 
     zip:"", 
-    boxing: "",
-    unboxing: "",
-    material: "",
-    valueFloor: "",
     role: searchParams.get('type'), 
     document: "" });
 
@@ -35,10 +31,6 @@ function Signup(props) {
     city: null, 
     state: null, 
     zip: null,
-    boxing: null,
-    unboxing: null,
-    material: null,
-    valueFloor: null,
     document: null,
   });
 
@@ -68,16 +60,10 @@ function Signup(props) {
           state: state.state,
           zip: state.zip
         },
-        values: {
-          boxing: state.boxing,
-          unboxing: state.unboxing,
-          material: state.material,
-          floor: state.floor,
-        },
         document: state.document
       }
       await apiService.signUp(newUser);
-      setErrors({ name: "", password: "", email: "", phone: "", street:"", number:"", city:"", state:"", zip:"", document: "", boxing: "", unboxing: "", material: "", floor: "" });
+      setErrors({ name: "", password: "", email: "", phone: "", street:"", number:"", city:"", state:"", zip:"", document: "" });
       navigate("/auth/login");
     } catch (err) {
       console.error(err);
@@ -221,62 +207,6 @@ function Signup(props) {
         onChange={handleChange}
           />
         </div>
-
-      {(state.role==='company') && <>
-      <div className='form-row'> 
-        <div className = "form-group col-md-3">
-              <label htmlFor="signupFormBoxing">Boxing value:</label>
-                <input
-                  className='form-control'
-                  type="text"
-                  name="boxing"
-                  id="signupFormboxing"
-                  value={state.boxing}
-                  error={errors.boxing}
-                  onChange={handleChange}
-                />
-            </div>
-
-            <div className = "form-group col-md-3">
-              <label htmlFor="signupFormUnboxing">Unboxing value:</label>
-                <input
-                  className='form-control'
-                  type="text"
-                  name="unboxing"
-                  id="signupFormUnboxing"
-                  value={state.unboxing}
-                  error={errors.unboxing}
-                  onChange={handleChange}
-                />
-            </div>
-
-            <div className = "form-group col-md-3">
-              <label htmlFor="signupFormMaterial">Material value:</label>
-                <input
-                  className='form-control'
-                  type="text"
-                  name="material"
-                  id="signupFormMaterial"
-                  value={state.material}
-                  error={errors.material}
-                  onChange={handleChange}
-                />
-            </div>  
-
-            <div className = "form-group col-md-3">
-              <label htmlFor="signupFormValueFloor">Value per floor:</label>
-                <input
-                  className='form-control'
-                  type="text"
-                  name="valueFloor"
-                  id="signupFormValueFloor"
-                  value={state.floor}
-                  error={errors.floor}
-                  onChange={handleChange}
-                />
-            </div>
-            </div>
-            </>}
 
   <button type="submit" className="btn btn-primary btn-block btn-lg">Sign up</button>
 </form>

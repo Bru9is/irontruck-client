@@ -96,8 +96,7 @@ const Navbar = () => {
                   <li className="nav-item">
                       <Link onClick={() => {
                         logout()
-                        navigate("/")
-                        }} className="nav-link" to="#">Logout</Link>
+                        }} className="nav-link" to="/">Logout</Link>
                   </li> </>}
             </ul>
           </div>

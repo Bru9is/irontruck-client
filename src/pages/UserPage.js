@@ -53,6 +53,7 @@ const UserPage = () => {
                         material = {e.material}
                         floors = {e.floors}
                         role = {loggedInUser.user.role}
+                        setRefresh = {setRefresh} refresh = {refresh}
 
                     />
                     <Link className="btn btn-primary btn-sm" to={`/${e._id}/all-proposals`}>

@@ -9,7 +9,6 @@ function AuthContextComponent(props) {
   
   const logout = () => {
     localStorage.removeItem("loggedInUser")
-    
   } 
 
   useEffect(() => {

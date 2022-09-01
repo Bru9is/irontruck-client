@@ -78,6 +78,10 @@ class ApiService {
     return await this.api.get(`/${proposalId}/accept`);
   }
 
+  async deletePost(postId) {
+    return await this.api.delete(`/delete-post/${postId}`);
+  }
+
 }
 
 export default new ApiService();
