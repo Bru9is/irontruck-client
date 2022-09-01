@@ -53,8 +53,9 @@ const UserPage = () => {
                         material = {e.material}
                         floors = {e.floors}
                         role = {loggedInUser.user.role}
-                        setRefresh = {setRefresh} refresh = {refresh}
-
+                        setRefresh = {setRefresh} 
+                        refresh = {refresh}
+                        image = {loggedInUser.user.image}
                     />
                     <Link className="btn btn-primary btn-sm" to={`/${e._id}/all-proposals`}>
                         See company proposals

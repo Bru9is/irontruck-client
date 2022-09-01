@@ -6,6 +6,17 @@ import Navbar from "../../components/Navbar";
 function Signup(props) {
 
   const [searchParams] = useSearchParams()
+  const [imageUrl, setImageUrl] = useState('')
+  
+  const handleFileUpload = async (e) => {
+        
+    const uploadData = new FormData()
+
+    uploadData.append('imageUrl', e.target.files[0])
+    const response = await apiService.uploadFile(uploadData)
+
+    setImageUrl(response.filePath)
+  }
 
   const [state, setState] = useState({ 
     name: "", 
@@ -17,6 +28,7 @@ function Signup(props) {
     city:"", 
     state:"", 
     zip:"", 
+    image: "",
     role: searchParams.get('type'), 
     document: "" });
 
@@ -32,6 +44,7 @@ function Signup(props) {
     state: null, 
     zip: null,
     document: null,
+    image: null,
   });
 
   const navigate = useNavigate();
@@ -45,7 +58,7 @@ function Signup(props) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+    
     try {
       const newUser = {
         name: state.name,
@@ -60,10 +73,12 @@ function Signup(props) {
           state: state.state,
           zip: state.zip
         },
-        document: state.document
+        document: state.document,
+        image: imageUrl,
       }
+      
       await apiService.signUp(newUser);
-      setErrors({ name: "", password: "", email: "", phone: "", street:"", number:"", city:"", state:"", zip:"", document: "" });
+      setErrors({ name: "", password: "", email: "", phone: "", street:"", number:"", city:"", state:"", zip:"", document: "", image:"" });
       navigate("/auth/login");
     } catch (err) {
       console.error(err);
@@ -205,8 +220,17 @@ function Signup(props) {
         value={state.document}
         error={errors.document}
         onChange={handleChange}
-          />
-        </div>
+     />
+  </div>
+
+  <div className="form-group">
+    <label for="inputImage">Image upload</label>
+      <input 
+        type="file" 
+        name="imageUrl" 
+        onChange={ handleFileUpload } 
+        />  
+  </div>
 
   <button type="submit" className="btn btn-primary btn-block btn-lg">Sign up</button>
 </form>
