@@ -32,7 +32,8 @@ const UserPage = () => {
         <Navbar />   
         <div className = 'user-page-container'>
         <CreatePost style = {{width: "50%"}} 
-                    setRefresh = {setRefresh} refresh = {refresh} 
+                    setRefresh = {setRefresh} 
+                    refresh = {refresh} 
         />
         <div className = 'post-container'>
         <h1>Your posts</h1>

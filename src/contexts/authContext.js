@@ -9,6 +9,7 @@ function AuthContextComponent(props) {
   
   const logout = () => {
     localStorage.removeItem("loggedInUser")
+    setLoggedInUser({ token: "", user: {} })
   } 
 
   useEffect(() => {
@@ -23,8 +24,14 @@ function AuthContextComponent(props) {
 
   }, []);
 
+  const updateLoggedInUserInfo = (loggedInUserInfo) => {
+
+    setLoggedInUser(loggedInUserInfo)
+    localStorage.setItem('loggedInUser', JSON.stringify(loggedInUserInfo))
+  }
+
   return (
-    <AuthContext.Provider value={{ isLoading, loggedInUser, setLoggedInUser, logout }}>
+    <AuthContext.Provider value={{ isLoading, loggedInUser, setLoggedInUser, logout, updateLoggedInUserInfo }}>
       {props.children}
     </AuthContext.Provider>
   );

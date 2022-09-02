@@ -28,7 +28,7 @@ function Signup(props) {
     city:"", 
     state:"", 
     zip:"", 
-    image: "",
+    imageUrl: "",
     role: searchParams.get('type'), 
     document: "" });
 
@@ -44,7 +44,7 @@ function Signup(props) {
     state: null, 
     zip: null,
     document: null,
-    image: null,
+    imageUrl: null,
   });
 
   const navigate = useNavigate();
@@ -74,7 +74,7 @@ function Signup(props) {
           zip: state.zip
         },
         document: state.document,
-        image: imageUrl,
+        imageUrl: imageUrl,
       }
       
       await apiService.signUp(newUser);
@@ -232,7 +232,7 @@ function Signup(props) {
         />  
   </div>
 
-  <button type="submit" className="btn btn-primary btn-block btn-lg">Sign up</button>
+  <button type="submit" className="btn btn-primary btn-block btn-lg" disabled={imageUrl === ''}>Sign up</button>
 </form>
 
 

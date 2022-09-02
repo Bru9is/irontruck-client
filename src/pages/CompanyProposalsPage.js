@@ -28,7 +28,9 @@ const CompanyProposalsPage = () => {
         <div>
             <Navbar />
             <div className = 'proposals-container'>
-            {proposals.map((e) => {
+                {proposals.length===0 && <h1>No proposals yet!</h1>}
+            
+                {proposals.map((e) => {
             return(
                 <div>
                     <ProposalCard 

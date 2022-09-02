@@ -1,7 +1,7 @@
 import apiService from "../services/api.service";
 import { useNavigate } from 'react-router-dom'
 
-const ProposalCard = ({date, origin, destination, companyName, total, proposalId, status, role}) => {
+const ProposalCard = ({date, origin, destination, companyName, total, proposalId, status, role, companyImageUrl}) => {
 
     const navigate = useNavigate()
 
@@ -30,7 +30,10 @@ const ProposalCard = ({date, origin, destination, companyName, total, proposalId
                 <button className = 'btn btn-primary btn-sm accept-reject' onClick = {handleClick}>Accept proposal</button>
                 <button className = 'btn btn-danger btn-sm accept-reject'>Reject proposal</button>
               </>)}
-            {(status === 'accepted' && role === 'user') && <button className =  'btn btn-secondary btn-sm'onClick = {handleClick}>See company details</button>}
+            {(status === 'accepted' && role === 'user') && <div>
+                <img src= {companyImageUrl} alt='company image'/>
+                <button className =  'btn btn-secondary btn-sm'onClick = {handleClick}>See company details</button>
+                </div>}
             
     </div>
     )

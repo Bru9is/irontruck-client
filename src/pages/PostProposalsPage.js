@@ -42,6 +42,7 @@ const PostProposalsPage = () => {
                         total = {e.total}
                         proposalId = {e._id}
                         role = {loggedInUser.user.role}
+                        companyImageUrl = {e.company.imageUrl}
                     />
                 </div>
             )

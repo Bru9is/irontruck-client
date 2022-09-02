@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../contexts/authContext";
 import apiService from "../services/api.service";
 import { useNavigate } from "react-router-dom";
 import Navbar from '../components/Navbar'
@@ -7,35 +8,53 @@ const EditProfilePage = () => {
   
     const navigate = useNavigate()
 
+    const { loggedInUser, updateLoggedInUserInfo } = useContext(AuthContext)
+
+    const [refresh, setRefresh] = useState(false)
+
     const [profile, setProfile] = useState({ 
         name: "", 
         password: "", 
         email: "", 
         phone: "", 
-        street: '',
-        number: '',
-        city: '',
-        state: '',
-        zip: '',
+        street: "",
+        number: "",
+        city: "",
+        state: "",
+        zip: "",
         boxing: "",
         unboxing: "",
         material: "",
         valueFloor: "",
-        document: "" });
+        document: "",
+        imageUrl: ""
+     });
+
+     const [imageUrl, setImageUrl] = useState("")
+
+     const handleFileUpload = async (e) => {
+        
+        const uploadData = new FormData()
+    
+        uploadData.append('imageUrl', e.target.files[0])
+        const response = await apiService.uploadFile(uploadData)
+    
+        setImageUrl(response.filePath)
+      }
     
     useEffect(() => {
         async function getProfile(){
             try {
                 const result = await apiService.getCompany()
-                console.log(result.data)
                 setProfile({...result.data, street:result.data.address.street, number:result.data.address.number,
-                    city:result.data.address.city, state:result.data.address.state, zip:result.data.address.zip}) 
+                    city:result.data.address.city, state:result.data.address.state, zip:result.data.address.zip, imageUrl:result.data.imageUrl}) 
+                    setImageUrl(result.data.imageUrl)
             } catch(err) {
                 console.log(err)
             }
         }
         getProfile()
-    }, [])
+    }, [refresh])
 
      async function handleSubmit(e) {
       e.preventDefault();
@@ -52,13 +71,18 @@ const EditProfilePage = () => {
                 state: profile.state,
                 zip: profile.zip
               },
-              document: profile.document
+              document: profile.document,
+              imageUrl: imageUrl
             }
 
             console.log('edited user', editedUser)
             await apiService.editProfile(editedUser);
+            const updatedUser = {...loggedInUser, user: {...loggedInUser.user, imageUrl: profile.imageUrl}}
+            updateLoggedInUserInfo(updatedUser)
+
             alert("Profile successfully updated!")
-            navigate("/");
+            setRefresh(!refresh)
+
           } catch (err) {
             console.error(err);
           }
@@ -69,8 +93,18 @@ const EditProfilePage = () => {
     <div>
         <Navbar />
       <h1 id = 'edit-your-profile'>Edit your profile</h1>
-    <div className="signup-container">
+        <div className="signup-container">
+        <div className = 'circular-image centered-image'>
+            <img id='profile-image ' src={profile.imageUrl} alt='profile'/>
+        </div>
+
         <form onSubmit={handleSubmit}>
+            
+            <input 
+            type="file" 
+            name={profile.imageUrl}
+            onChange={ handleFileUpload } 
+            />  
 
             <div className="form-group">
             <label htmlFor="editProfileName">Name</label>
@@ -233,7 +267,7 @@ const EditProfilePage = () => {
                     </div>
                     </>}
 
-        <button type="submit" className="btn btn-primary btn-block btn-lg">Save changes</button>
+        <button type="submit" className="btn btn-primary btn-block btn-lg" disabled={imageUrl === ''}>Save changes</button>
         </form>
     </div>
     </div>
