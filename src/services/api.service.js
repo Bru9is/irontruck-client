@@ -78,6 +78,10 @@ class ApiService {
     return await this.api.get(`/${proposalId}/accept`);
   }
 
+  async deletePost(postId) {
+    return await this.api.delete(`/delete-post/${postId}`);
+  }
+
   async uploadFile(fileData) {
     const res = await this.api.post('/user/upload', fileData)
     return res.data

@@ -28,11 +28,7 @@ function Signup(props) {
     city:"", 
     state:"", 
     zip:"", 
-    boxing: "",
-    unboxing: "",
-    material: "",
-    valueFloor: "",
-    image: "",
+    imageUrl: "",
     role: searchParams.get('type'), 
     document: "" });
 
@@ -47,12 +43,8 @@ function Signup(props) {
     city: null, 
     state: null, 
     zip: null,
-    boxing: null,
-    unboxing: null,
-    material: null,
-    valueFloor: null,
     document: null,
-    image: null,
+    imageUrl: null,
   });
 
   const navigate = useNavigate();
@@ -81,18 +73,12 @@ function Signup(props) {
           state: state.state,
           zip: state.zip
         },
-        values: {
-          boxing: state.boxing,
-          unboxing: state.unboxing,
-          material: state.material,
-          floor: state.floor,
-        },
         document: state.document,
-        image: imageUrl,
+        imageUrl: imageUrl,
       }
       
       await apiService.signUp(newUser);
-      setErrors({ name: "", password: "", email: "", phone: "", street:"", number:"", city:"", state:"", zip:"", document: "", boxing: "", unboxing: "", material: "", floor: "", image:"" });
+      setErrors({ name: "", password: "", email: "", phone: "", street:"", number:"", city:"", state:"", zip:"", document: "", image:"" });
       navigate("/auth/login");
     } catch (err) {
       console.error(err);
@@ -246,7 +232,7 @@ function Signup(props) {
         />  
   </div>
 
-  <button type="submit" className="btn btn-primary btn-block btn-lg">Sign up</button>
+  <button type="submit" className="btn btn-primary btn-block btn-lg" disabled={imageUrl === ''}>Sign up</button>
 </form>
 
 

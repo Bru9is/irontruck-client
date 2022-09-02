@@ -89,15 +89,17 @@ const Navbar = () => {
               { (!isLoading && loggedInUser.token !== '') &&
               <>
               <li className="nav-item">
-                    <Link className="nav-link active" aria-current="page" to="/edit-profile">
+                    <Link className="nav-link active" aria-current="page" to="/edit-profile"> 
+                      <div className='circular-image sm-profile-pic'>
+                        <img src = {loggedInUser.user.imageUrl}/>
+                      </div>
                       My profile
                     </Link>
                   </li>
                   <li className="nav-item">
                       <Link onClick={() => {
                         logout()
-                        navigate("/")
-                        }} className="nav-link" to="#">Logout</Link>
+                        }} className="nav-link" to="/">Logout</Link>
                   </li> </>}
             </ul>
           </div>

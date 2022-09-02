@@ -1,10 +1,13 @@
 import Navbar from "../components/Navbar.js"
 import ProposalCard from "../components/ProposalCard.js"
 import { useParams } from "react-router-dom"
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
 import apiService from "../services/api.service.js"
+import { AuthContext } from "../contexts/authContext.js"
 
 const PostProposalsPage = () => {
+
+    const { loggedInUser } = useContext(AuthContext)
 
     const { postId } = useParams()
 
@@ -31,13 +34,15 @@ const PostProposalsPage = () => {
                 <div className = 'proposal-card'>
                     <ProposalCard 
                         key = {e._id}
-                        date = {new Date(e.createdAt).toLocaleDateString('pt-br')}
+                        date = {e.createdAt}
                         origin = {e.post.origin}
                         destination = {e.post.destination}
                         status = {e.status}
                         companyName = {e.company.name}
                         total = {e.total}
                         proposalId = {e._id}
+                        role = {loggedInUser.user.role}
+                        companyImageUrl = {e.company.imageUrl}
                     />
                 </div>
             )
