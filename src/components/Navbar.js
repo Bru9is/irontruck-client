@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
     const { isLoading, loggedInUser, logout } = useContext(AuthContext)
     const navigate = useNavigate();
-    
+    console.log(loggedInUser)
     return (
       <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#000000'}}>
         <div className="container-fluid">

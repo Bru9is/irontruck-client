@@ -74,12 +74,10 @@ const EditProfilePage = () => {
               document: profile.document,
               imageUrl: imageUrl
             }
-
-            console.log('edited user', editedUser)
+            
             await apiService.editProfile(editedUser);
-            const updatedUser = {...loggedInUser, user: {...loggedInUser.user, imageUrl: profile.imageUrl}}
+            const updatedUser = {...loggedInUser, user: {...loggedInUser.user, imageUrl: editedUser.imageUrl}}
             updateLoggedInUserInfo(updatedUser)
-
             alert("Profile successfully updated!")
             setRefresh(!refresh)
 
