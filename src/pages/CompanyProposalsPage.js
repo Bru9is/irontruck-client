@@ -5,8 +5,6 @@ import apiService from "../services/api.service.js"
 import { AuthContext } from "../contexts/authContext";
 import noProposals from '../assets/images/no-posts-proposals.png'
 
-
-
 const CompanyProposalsPage = () => {
 
 
@@ -33,7 +31,7 @@ const CompanyProposalsPage = () => {
                 {proposals.length === 0 && 
                 <div className = 'no-proposals-company'>
                 <h4>No proposals sent yet 😢 </h4>
-                    <img className = 'centered-image' style = {{width: "70%"}} src = {noProposals}/>
+                    <img alt="No Proposals" className = 'centered-image' style = {{width: "70%"}} src = {noProposals}/>
                 </div>}
             
                 {proposals.map((e) => {

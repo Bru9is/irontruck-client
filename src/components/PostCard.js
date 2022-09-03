@@ -1,14 +1,9 @@
 import {Link} from 'react-router-dom'
 import apiService from '../services/api.service';
-import {useEffect} from 'react'
 import {FaRegTrashAlt } from 'react-icons/fa'
 import {FiEdit} from 'react-icons/fi'
 
-
-
 function PostCard(props) {
-
-
     const postId = props.postId
 
     async function handleDelete(e){

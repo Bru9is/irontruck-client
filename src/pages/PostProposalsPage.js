@@ -33,7 +33,7 @@ const PostProposalsPage = () => {
             {proposals.length === 0 && 
             <div className = 'no-proposals'>
             <h4>No proposals for this post created yet 😢 </h4>
-                <img style = {{width: "40%"}} src = {noProposals}/>
+                <img alt="no posts" style = {{width: "40%"}} src = {noProposals}/>
             </div>}
 
             <div className = 'proposals-container'>

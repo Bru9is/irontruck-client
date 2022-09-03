@@ -1,17 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../contexts/authContext";
 import apiService from "../services/api.service";
-import { useNavigate } from "react-router-dom";
 import Navbar from '../components/Navbar'
 
 const EditProfilePage = () => {
   
-    const navigate = useNavigate()
-
     const { loggedInUser, updateLoggedInUserInfo } = useContext(AuthContext)
-
     const [refresh, setRefresh] = useState(false)
-
     const [profile, setProfile] = useState({ 
         name: "", 
         password: "", 
