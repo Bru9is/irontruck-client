@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/authContext";
 import logo from '../assets/images/irontruck-logo.png'
-import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const { isLoading, loggedInUser, logout } = useContext(AuthContext)
-    const navigate = useNavigate();
     console.log(loggedInUser)
     return (
       <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#000000'}}>
@@ -30,16 +28,17 @@ const Navbar = () => {
                  <img width = '150' id = 'irontruck-logo' src = {logo} alt = 'irontruck logo'/>
                 </Link>
                 </li>
-                <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
-                  Home
-                </Link>
-              </li>
+                    <li className="nav-item">
+                      { (!isLoading && loggedInUser.token === '') && 
+                    <Link className="nav-link active" aria-current="page" to="/">
+                      Home
+                    </Link>
+                    }
+                </li>
+              
 
               { (!isLoading && loggedInUser.token !== '') ? (
                 <>
-
-
                   {(loggedInUser.user.role === 'user') ? 
                   <>
                   <li className="nav-item active">
@@ -66,8 +65,6 @@ const Navbar = () => {
                       </Link>
                     </li> 
                   </>}
-                  
-                  
                 </>
               ) : (
                 <li className="nav-item active">
@@ -91,7 +88,7 @@ const Navbar = () => {
               <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/edit-profile"> 
                       <div className='circular-image sm-profile-pic'>
-                        <img src = {loggedInUser.user.imageUrl}/>
+                        <img alt="No Content" src = {loggedInUser.user.imageUrl}/>
                       </div>
                       My profile
                     </Link>

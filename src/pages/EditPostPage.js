@@ -33,7 +33,6 @@ const EditPostPage = () => {
         
     useEffect(() => {
         async function getPostById(postId){
-            console.log(postId)
             try {
                 const result = await apiService.getPostById(postId)
                 setPost(result.data) 

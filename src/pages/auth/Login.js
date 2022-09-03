@@ -28,7 +28,6 @@ function Login(props) {
 
     try {
       const response = await apiService.login(state);
-      console.log(response);
       
       authContext.setLoggedInUser({ ...response.data });
       localStorage.setItem(

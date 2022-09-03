@@ -41,7 +41,7 @@ const UserPage = () => {
         {posts.length === 0 && 
             <div className = 'no-posts'>
             <h4>No posts created yet</h4>
-                <img style = {{width: "70%"}} src = {noPostsImg}/>
+                <img alt="no posts" style = {{width: "70%"}} src = {noPostsImg}/>
             </div>}
         {posts.map((e) => {
             return(

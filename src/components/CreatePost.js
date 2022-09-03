@@ -1,7 +1,6 @@
 import { useState } from "react";
 import apiService from "../services/api.service.js"; 
 
-
 const Post = (props) => {
 
   const [state, setState] = useState({ 
@@ -56,8 +55,6 @@ const Post = (props) => {
             floors: state.floors, 
             comment: state.comment
           }
-
-          console.log(newPost)
 
           await apiService.createPost(newPost);
 
@@ -127,7 +124,6 @@ const Post = (props) => {
 
                 </select>
             </div>
-
             <div className = 'form-item'>
                 <label className = 'post-label' htmlFor="createPostFormBoxing">Need boxing?</label>
                 <input className = 'form-check-input'
@@ -140,7 +136,6 @@ const Post = (props) => {
                 onChange={handleCheck}
                 />
             </div>
-
             <div className = 'form-item'>
                 <label className = 'post-label' htmlFor="createPostFormUnboxing">Need unboxing?</label>
                 <input className = 'form-check-input'
@@ -153,7 +148,6 @@ const Post = (props) => {
                 onChange={handleCheck}
                 />
             </div>
-
             <div className = 'form-item'>
                 <label className = 'post-label' htmlFor="createPostFormMaterial">Need material?</label>
                 <input className = 'form-check-input'
@@ -166,7 +160,6 @@ const Post = (props) => {
                 onChange={handleCheck}
                 />
             </div>
-
             <div className = 'form-item'>
                 <label className = 'post-label' htmlFor="createPostFormFloor">Floors</label>
                 <input className = 'form-control'
@@ -178,7 +171,6 @@ const Post = (props) => {
                 onChange={handleChange}
                 />
             </div>
-
             <div className = 'form-item'>
                 <label className = 'post-label' htmlFor="createPostFormComment">Comment</label>
                 <input className = 'form-control'
@@ -190,12 +182,11 @@ const Post = (props) => {
                 onChange={handleChange}
                 />
             </div>
-
-            <div>
-                <button className = 'btn btn-primary btn-lg btn-block' id = 'create-post-btn' type="submit">Create post</button>
-            </div>
+              <div>
+                  <button className = 'btn btn-primary btn-lg btn-block' id = 'create-post-btn' type="submit">Create post</button>
+              </div>
             </form>
-            </div>
+        </div>
     )
 }
 
