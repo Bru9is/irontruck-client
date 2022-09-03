@@ -91,18 +91,18 @@ const EditProfilePage = () => {
     <div>
         <Navbar />
       <h1 id = 'edit-your-profile'>Edit your profile</h1>
-        <div className="signup-container">
-        <div className = 'circular-image centered-image'>
-            <img id='profile-image ' src={profile.imageUrl} alt='profile'/>
-        </div>
-
-        <form onSubmit={handleSubmit}>
-            
-            <input 
-            type="file" 
-            name={profile.imageUrl}
-            onChange={ handleFileUpload } 
-            />  
+        
+      <div className="signup-container">
+        <form className = 'form-shadow' onSubmit={handleSubmit}>
+            <div className = 'circular-image centered-image'>
+                <img id='profile-image ' src={profile.imageUrl} alt='profile'/>
+            </div>
+                <label id = '' htmlFor="editProfilePicture">{loggedInUser.user.role === 'user' ? 'Choose a new profile picture' : 'Choose a new company logo'}</label>
+                <input 
+                type="file" 
+                name={profile.imageUrl}
+                onChange={ handleFileUpload } 
+                />  
 
             <div className="form-group">
             <label htmlFor="editProfileName">Name</label>
@@ -116,7 +116,7 @@ const EditProfilePage = () => {
             />
         </div>
 
-        <div className="form-row">
+        <div className="form-group">
             <div>
             <label htmlFor="editProfileEmail">Email</label>
             <input 
@@ -213,58 +213,6 @@ const EditProfilePage = () => {
                 onChange={(e) => setProfile({ ...profile, document: e.target.value })}
                 />
                 </div>
-
-            {(profile.role==='company') && <>
-            <div className='form-row'> 
-                <div className = "form-group col-md-3">
-                    <label htmlFor="editProfileBoxing">Boxing value:</label>
-                        <input
-                        className='form-control'
-                        type="text"
-                        name={profile.boxing}
-                        id="editProfileboxing"
-                        value={profile.boxing}
-                        onChange={(e) => setProfile({ ...profile, boxing: e.target.value })}
-                        />
-                    </div>
-
-                    <div className = "form-group col-md-3">
-                    <label htmlFor="editProfileUnboxing">Unboxing value:</label>
-                        <input
-                        className='form-control'
-                        type="text"
-                        name={profile.unboxing}
-                        id="editProfileUnboxing"
-                        value={profile.unboxing}
-                        onChange={(e) => setProfile({ ...profile, unboxing: e.target.value })}
-                        />
-                    </div>
-
-                    <div className = "form-group col-md-3">
-                    <label htmlFor="editProfileMaterial">Material value:</label>
-                        <input
-                        className='form-control'
-                        type="text"
-                        name={profile.material}
-                        id="editProfileMaterial"
-                        value={profile.material}
-                        onChange={(e) => setProfile({ ...profile, material: e.target.value })}
-                        />
-                    </div>  
-
-                    <div className = "form-group col-md-3">
-                    <label htmlFor="editProfileValueFloor">Value per floor:</label>
-                        <input
-                        className='form-control'
-                        type="text"
-                        name={profile.floor}
-                        id="editProfileValueFloor"
-                        value={profile.floor}
-                        onChange={(e) => setProfile({ ...profile, valueFloor: e.target.value })}                />
-                    </div>
-                    </div>
-                    </>}
-
         <button type="submit" className="btn btn-primary btn-block btn-lg" disabled={imageUrl === ''}>Save changes</button>
         </form>
     </div>

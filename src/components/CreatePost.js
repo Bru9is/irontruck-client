@@ -74,7 +74,7 @@ const Post = (props) => {
     return (
       <div id ='create-post-form'>
         <h1>Create a new post</h1>
-        <form className = "gradient-border" onSubmit={handleSubmit}>
+        <form  className = 'form-shadow' onSubmit={handleSubmit}>
             <div className = 'form-item'>
                 <label className = 'post-label' htmlFor="createPostFormDate">Desired date</label>
                 <input className = 'form-control'

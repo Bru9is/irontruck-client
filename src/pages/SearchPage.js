@@ -39,7 +39,7 @@ const SearchPage = () => {
         {posts.map((e) => {
             
             return(
-                <div className = 'search-post-card gradient-border'>
+                <div className = 'search-post-card'>
                     <PostCard
                         date = {new Date(e.date).toLocaleDateString('pt-br')}
                         origin = {e.origin}

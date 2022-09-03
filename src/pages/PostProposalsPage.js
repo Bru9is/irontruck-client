@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import {useState, useEffect, useContext} from "react"
 import apiService from "../services/api.service.js"
 import { AuthContext } from "../contexts/authContext.js"
+import noProposals from '../assets/images/no-posts-proposals.png'
 
 const PostProposalsPage = () => {
 
@@ -28,6 +29,13 @@ const PostProposalsPage = () => {
     return (
         <div>
             <Navbar />
+
+            {proposals.length === 0 && 
+            <div className = 'no-proposals'>
+            <h4>No proposals for this post created yet 😢 </h4>
+                <img style = {{width: "40%"}} src = {noProposals}/>
+            </div>}
+
             <div className = 'proposals-container'>
             {proposals.map((e) => {
             return(
