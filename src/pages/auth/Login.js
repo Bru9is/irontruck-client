@@ -52,7 +52,7 @@ function Login(props) {
     <Navbar />
     <div className="login-container">
       
-    <form onSubmit={handleSubmit}>
+    <form className = 'form-shadow' onSubmit={handleSubmit}>
 
       <div className="form-group">
         <label htmlFor="signupFormEmail">What's your e-mail address?</label>        

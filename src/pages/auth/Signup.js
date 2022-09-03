@@ -92,7 +92,7 @@ function Signup(props) {
 
     <div className = 'signup-container'>
 
-    <form onSubmit={handleSubmit}>
+    <form className = 'form-shadow' onSubmit={handleSubmit}>
     <h1>{state.role.toUpperCase()} SIGNUP</h1>
     <div className="form-group">
     <label for="inputName">{state.role==='user'? "Name" : "Company name"}</label>
@@ -224,7 +224,7 @@ function Signup(props) {
   </div>
 
   <div className="form-group">
-    <label for="inputImage">Image upload</label>
+    <label for="inputImage">{state.role === 'user'? 'Choose your profile picture':'Choose your company logo'}</label>
       <input 
         type="file" 
         name="imageUrl" 

@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar"
 import { Link } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import { AuthContext } from "../contexts/authContext";
+import noPostsImg from '../assets/images/no-posts-proposals.png'
 
 
 const UserPage = () => {
@@ -37,10 +38,15 @@ const UserPage = () => {
         />
         <div className = 'post-container'>
         <h1>Your posts</h1>
+        {posts.length === 0 && 
+            <div className = 'no-posts'>
+            <h4>No posts created yet</h4>
+                <img style = {{width: "70%"}} src = {noPostsImg}/>
+            </div>}
         {posts.map((e) => {
             return(
                 
-                <div className = 'post-card gradient-border'>
+                <div className = 'post-card'>
                     
                     <PostCard
                         postId={e._id} 
@@ -58,7 +64,7 @@ const UserPage = () => {
                         refresh = {refresh}
                         image = {loggedInUser.user.image}
                     />
-                    <Link className="btn btn-primary btn-sm" to={`/${e._id}/all-proposals`}>
+                    <Link className="btn btn-primary btn-sm see-proposals" to={`/${e._id}/all-proposals`}>
                         See company proposals
                     </Link>
                 </div>

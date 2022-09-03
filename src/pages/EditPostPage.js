@@ -75,7 +75,7 @@ const EditPostPage = () => {
         <Navbar />
         <h1 id = 'edit-post'>Edit post</h1>
         <div className = 'signup-container'>
-        <form className = "gradient-border" onSubmit={handleSubmit}>
+        <form className = 'form-shadow' onSubmit={handleSubmit}>
             <div className = 'form-item'>
                 <label className = 'post-label' htmlFor="createPostFormDate">Desired date</label>
                 <input className = 'form-control'
@@ -127,7 +127,7 @@ const EditPostPage = () => {
                 <input className = 'form-check-input'
                 type="checkbox"
                 name="boxing"
-                id="createPostFormBoxing"
+                id="createPostFormBoxingEdit"
                 value={post.boxing}
                 checked={post.boxing}
                 onChange={handleCheck}
@@ -139,7 +139,7 @@ const EditPostPage = () => {
                 <input className = 'form-check-input'
                 type="checkbox"
                 name="unboxing"
-                id="createPostFormUnboxing"
+                id="createPostFormUnboxingEdit"
                 value={post.unboxing}
                 checked={post.unboxing}
                 onChange={handleCheck}
@@ -151,7 +151,7 @@ const EditPostPage = () => {
                 <input className = 'form-check-input'
                 type="checkbox"
                 name="material"
-                id="createPostFormMaterial"
+                id="createPostFormMaterialEdit"
                 value={post.material}
                 checked={post.material}
                 onChange={handleCheck}

@@ -87,6 +87,10 @@ class ApiService {
     return res.data
   }
 
+  async rejectProposal(proposalId) {
+    return await this.api.put(`/${proposalId}/reject`);
+  }
+
 }
 
 export default new ApiService();

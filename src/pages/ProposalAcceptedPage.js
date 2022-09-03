@@ -33,9 +33,9 @@ const ProposalAcceptedPage = (name, phone, email) => {
         <Navbar />
 
         <div className = 'accepted-container'>
-        <h4 style = {{color:'green'}}>Proposal has been successfully accepted!</h4>
+        <h4 style = {{color:'green'}}>Proposal has been successfully accepted!🎉</h4>
         <p style = {{textAlign: 'center'}}>Please contact the company to discuss the next steps using the details below:</p>
-            <div className = 'gradient-border company-details'>
+            <div className = 'form-shadow company-details'>
             <p> <span style = {{color: '#9a0414'}}> Name: </span><span>{company.name}</span> </p>
             <p> <span style = {{color: '#9a0414'}}> Phone: </span><span>{company.phone}</span> </p>
             <p> <span style = {{color: '#9a0414'}}> Email: </span><span>{company.email}</span> </p>

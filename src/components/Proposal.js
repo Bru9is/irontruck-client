@@ -22,7 +22,11 @@ function Proposal(props) {
     return(
         <>
             <form className = 'form-group' onSubmit={handleSubmit}>
-                <input
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input
                     className="form-control" 
                     type="text"
                     name="total"
@@ -31,6 +35,8 @@ function Proposal(props) {
                     value={total}
                     onChange= {(e) => {setTotal(e.target.value)}}
                 />
+                </div>
+
                 <button className="btn btn-primary btn-block" type="submit">Send proposal</button>
             </form> 
         

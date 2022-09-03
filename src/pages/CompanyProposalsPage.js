@@ -3,6 +3,8 @@ import ProposalCard from "../components/ProposalCard.js"
 import {useState, useEffect, useContext} from "react"
 import apiService from "../services/api.service.js"
 import { AuthContext } from "../contexts/authContext";
+import noProposals from '../assets/images/no-posts-proposals.png'
+
 
 
 const CompanyProposalsPage = () => {
@@ -27,8 +29,12 @@ const CompanyProposalsPage = () => {
     return (
         <div>
             <Navbar />
-            <div className = 'proposals-container'>
-                {proposals.length===0 && <h1>No proposals yet!</h1>}
+                <div className = 'proposals-container'>
+                {proposals.length === 0 && 
+                <div className = 'no-proposals-company'>
+                <h4>No proposals sent yet 😢 </h4>
+                    <img className = 'centered-image' style = {{width: "70%"}} src = {noProposals}/>
+                </div>}
             
                 {proposals.map((e) => {
             return(
